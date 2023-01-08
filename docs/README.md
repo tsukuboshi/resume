@@ -90,7 +90,7 @@ GitHub / GitHub Actions
 |資格|取得日|
 |---|---|
 |AWS SAP|2022/8/3|
-|AWS SAP|2022/3/24|
+|AWS DVA|2022/3/24|
 |AWS SAA|2021/11/11|
 |AWS CLF|2021/7/21|
 |LPIC-2|2021/6/28|
