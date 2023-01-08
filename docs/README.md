@@ -61,23 +61,23 @@ Lambda (Node.js / Python) を用いた簡単なサーバレスツールの開発
 
 ### AWS
 
-IAM | VPC | ELB | EC2 | RDS | Aurora | ElastiCache | S3 | CloudFront | Route53 | ACM | WAF | ECS | Fargate | API Gateway | Lambda | SNS | Kinesis Data Firehose | EventBridge | CloudWatch | Control Tower | Organizations | Identity Center | Service Catalog
+IAM / VPC / ELB / EC2 / RDS / Aurora / ElastiCache / S3 / CloudFront / Route53 / ACM / WAF / ECS / Fargate / API Gateway / Lambda / SNS / Kinesis Data Firehose / EventBridge / CloudWatch / Control Tower / Organizations / Identity Center / Service Catalog
 
 ### IaC
 
-Terraform | CloudFormation
+Terraform / CloudFormation
 
 ### OS
 
-Linux | Windows
+Linux / Windows
 
 ### Middleware
 
-Apache | Oracle | Docker | Kubernetes
+Apache / Oracle / Docker / Kubernetes
 
 ### Programming Language
 
-Bash | Powershell | Python | JavaScript
+Bash / Powershell / Python / JavaScript
 
 ### SaaS
 
