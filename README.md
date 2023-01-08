@@ -1,4 +1,10 @@
 # tsukuboshi's resume
+
+## Data
+
+- [GitHub Pages](https://tsukuboshi.github.io/resume/)  
+- [File](https://github.com/tsukuboshi/resume/blob/main/docs/README.md)  
+
 ## Features
 
 ### 💅 Lint text
