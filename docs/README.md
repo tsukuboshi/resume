@@ -103,13 +103,15 @@ GitHub / GitHub Actions
 
 ### クラスメソッド株式会社（2022/03〜現在）
 
-クラウドエンジニアとして、主に AWS アーキテクチャの設計/構築を担当。PJ に応じて、IaC(Terraform/CloudFormation)や Serverless(Lambda)を用いたコード開発も実施。
+クラウドエンジニアとして、主に AWS アーキテクチャの設計/構築を担当。  
+PJ に応じて、IaC(Terraform/CloudFormation)や Serverless(Lambda)を用いたコード開発も実施。
 
 (プロジェクト詳細は今後記載予定）
 
 ### 兼松エレクトロニクス株式会社（2019/04〜2022/02）
 
-インフラエンジニアとして、主にオンプレミスにおける Linux サーバの設計/構築を担当。またコンテナ技術（Docker/Kubernetes)の検証も実施。
+インフラエンジニアとして、主にオンプレミスにおける Linux サーバの設計/構築を担当。  
+またコンテナ技術（Docker/Kubernetes)の検証も実施。
 
 (プロジェクト詳細は今後記載予定）
 
