@@ -61,7 +61,7 @@ Lambda (Node.js / Python) を用いた簡単なサーバレスツールの開発
 
 ### AWS
 
-IAM / VPC / ELB / EC2 / RDS / Aurora / ElastiCache / S3 / CloudFront / Route53 / ACM / WAF / ECS / Fargate / API Gateway / Lambda / CodeBuild / CodeDeploy / CodePipeline / SNS / Kinesis Data Firehose / EventBridge / CloudWatch / Control Tower / Organizations / Identity Center / Service Catalog
+IAM / VPC / ELB(ALB・NLB) / EC2 / RDS(MySQL・PostgreSQL・Aurora) / ElastiCache(Redis) / S3 / CloudFront / Route53 / ACM / WAF / ECS(Fargate) / API Gateway / Lambda(Python・JavaScript) / CodeCommit / CodeBuild / CodeDeploy / CodePipeline / SNS / Kinesis Data Firehose / EventBridge / CloudWatch(Logs) / Control Tower / Organizations / Identity Center / Service Catalog
 
 ### IaC
 
