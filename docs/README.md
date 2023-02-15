@@ -29,28 +29,28 @@
 ### AWS アーキテクチャ設計/構築
 
 現在は AWS を業務で一番用いています。  
-Web アプリケーション/静的 Web サイトホスティング/マイクロサービス/CICD パイプライン/マルチアカウントといった様々なアーキテクチャの設計/構築経験があります。
+Web アプリケーション、静的 Web サイトホスティング、マイクロサービス、CICD パイプライン、マルチアカウントといった様々なアーキテクチャの設計・構築経験があります。
 
 
 ### Linuxサーバ設計/構築
 
-3 年以上の実務経験を持ち、オンプレミス・AWS でのサーバ設計/構築経験があります。  
+3 年以上の実務経験を持ち、オンプレミス及び AWS でのサーバ設計・構築経験があります。  
 Bash を用いたシェルスクリプト開発経験もあります。
 
 ### コンテナ基盤設計/構築
 
-ECS を用いたコンテナ基盤の設計/構築経験があります。  
-また Docker/Kubernetes の検証経験も豊富です。
+ECS を用いたコンテナ基盤の設計・構築経験があります。  
+また Docker 及び Kubernetes の検証経験も豊富です。
 
 ### IaC コード開発
 
-AWS アーキテクチャを構築するにあたり、CloudFormation/Terraform コードの開発経験があります。  
+AWS アーキテクチャを構築するにあたり、CloudFormation 及び Terraform コードの開発経験があります。  
 特に Terraform は、自身がよく使用するテンプレート用リポジトリを独自で作成しています。
 
 
 ### サーバレス開発
 
-Lambda (Node.js / Python) を用いた簡単なサーバレスツールの開発経験があります。
+Lambda (Node.js・Python) を用いた簡単なサーバレスツールの開発経験があります。
 
 
 ---
@@ -61,7 +61,7 @@ Lambda (Node.js / Python) を用いた簡単なサーバレスツールの開発
 
 ### AWS
 
-IAM / VPC / ELB(ALB・NLB) / EC2 / EFS / RDS(MySQL・PostgreSQL・Aurora) / ElastiCache(Redis) / S3 / CloudFront / Route53 / ACM / WAF / ECS(Fargate) / API Gateway / Lambda(Python・JavaScript) / CodeCommit / CodeBuild / CodeDeploy / CodePipeline / SNS / Kinesis Data Firehose / EventBridge / CloudWatch(Logs) / Control Tower / Organizations / Identity Center / Service Catalog
+IAM / VPC / ELB(ALB・NLB) / EC2 / EFS / RDS(MySQL・PostgreSQL・Aurora) / ElastiCache(Redis) / S3 / CloudFront / Route53 / ACM / WAF / ECS(Fargate) / API Gateway / Lambda(Node.js・Python) / CodeCommit / CodeBuild / CodeDeploy / CodePipeline / SNS / Kinesis Data Firehose / EventBridge / CloudWatch(Logs) / Control Tower / Organizations / Identity Center / Service Catalog
 
 ### IaC
 
