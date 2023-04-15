@@ -106,7 +106,6 @@ GitHub / GitHub Actions
 ---
 
 ## 経歴詳細(クラスメソッド株式会社:2022/03 - 現在)
-2022/03〜現在）
 
 クラウドエンジニアとして、主に AWS アーキテクチャの設計/構築を担当。  
 PJ に応じて、IaC(Terraform/CloudFormation)や Serverless(Lambda)を用いたコード開発も実施。
