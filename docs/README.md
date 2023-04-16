@@ -19,7 +19,6 @@
 - [Zenn](https://zenn.dev/tsukuboshi)
 - [SpeakerDeck](https://speakerdeck.com/tsukuboshi)
 - [Twitter](https://twitter.com/tsukuboshi0755)
-- [YOUTRUST](https://youtrust.jp/users/tsukuboshi)
 
 ---
 
@@ -47,7 +46,7 @@ AWS アーキテクチャを構築するにあたり、CloudFormation 及び Ter
 
 ### サーバレスアプリケーション開発
 
-主に APIGateway / Lambda (Node.js・Python) を用いた簡単なサーバレスアプリケーションの開発経験があります。
+主に API Gateway / Lambda (Node.js・Python) を用いた簡単なサーバレスアプリケーションの開発経験があります。
 
 ### チームマネジメント
 
