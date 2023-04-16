@@ -3,6 +3,7 @@
 ## Data
 
 - [GitHub Pages](https://tsukuboshi.github.io/resume/)  
+- [PDF](https://github.com/tsukuboshi/resume/releases)
 - [File](https://github.com/tsukuboshi/resume/blob/main/docs/README.md)  
 
 ## Features
