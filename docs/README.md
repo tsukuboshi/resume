@@ -91,6 +91,7 @@ GitHub / GitHub Actions
 
 |資格|取得日|
 |---|---|
+|AWS DOP|2023/6/15|
 |AWS SOA|2023/2/15|
 |AWS SAP|2022/8/3|
 |AWS DVA|2022/3/24|
