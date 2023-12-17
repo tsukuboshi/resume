@@ -47,3 +47,7 @@ Automatically generate issues every three months with GitHub Actions Schedules t
 
 To change the duration or stop the job, edit `.github/workflows/create-issue.yml`.  
 To change the issue contents, edit `.github/ISSUE_TEMPLATE.md`.
+
+### References
+
+[GitHubの機能をフルに使って職務経歴書の継続的インテグレーションを実現する](https://zenn.dev/ryo_kawamata/articles/resume-on-github)
