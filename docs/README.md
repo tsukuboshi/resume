@@ -69,9 +69,20 @@ Python / JavaScript / TypeScript
 
 GitHub / GitHub Actions
 
-## 保有資格
+---
 
-|資格|取得日|
+## 保有称号
+
+### 表彰
+
+|表彰名|対象年度|
+|---|---|
+|Japan AWS Top Engineer|2024|
+|AWS Community Builder|2024|
+
+### 資格
+
+|資格名|取得日|
 |---|---|
 |AWS DOP|2023/6/15|
 |AWS SOA|2023/2/15|
