@@ -46,7 +46,7 @@ export VERSION=$(latest_tag=$(git describe --tags --abbrev=0 2>/dev/null) && if 
 git add docs/README.md
 git commit -m "add job"
 git tag ${VERSION}
-git push origin main --tags
+git push origin --tags
 ```
 
 ### 参考文献
