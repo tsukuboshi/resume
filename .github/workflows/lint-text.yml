@@ -1,6 +1,7 @@
 name: lint text
 
-on: [push, pull_request]
+on:
+  push:
 
 jobs:
   build:

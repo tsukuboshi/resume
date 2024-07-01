@@ -3,6 +3,9 @@ name: create issue
 on:
   schedule:
     - cron:  '0 0 1 */3 *'
+permissions:
+  contents: read
+  issues: write
 
 jobs:
   build:
