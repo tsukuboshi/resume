@@ -1,37 +1,45 @@
 # tsukuboshi's resume
 
-## Data
+## 経歴書のデータ形式
 
 - [GitHub Pages](https://tsukuboshi.github.io/resume/)  
 - [PDF](https://github.com/tsukuboshi/resume/releases)
-- [File](https://github.com/tsukuboshi/resume/blob/main/docs/README.md)  
+- [Markdown](https://github.com/tsukuboshi/resume/blob/main/docs/README.md)  
 
-## Features
+## 本リポジトリの機能
 
-### 💅 Lint text
+### 💅 自動校正
 
-Automatic proofreading with [textlint](https://github.com/textlint/textlint).
+以下コマンドで、[textlint](https://github.com/textlint/textlint)による自動校正が行われます。
 
 ```bash
-npm run lint
+npm run format
 ```
 
-It is also automatically executed when pre-commit by [husky](https://github.com/typicode/husky).  
-proofreading rules are set with `.textlintrc`.
+また GitHub Actions により、プッシュ時にも自動校正が行われます。
 
-### 📝 Convert MD to PDF
+校正ルールを変更する場合は、 `.textlintrc` を編集してください。
 
-You can generate PDF with [md-to-pdf](https://www.npmjs.com/package/md-to-pdf).
+### 📝 PDF生成
+
+以下コマンドで、[md-to-pdf](https://www.npmjs.com/package/md-to-pdf)による PDF 生成が行われます。  
 
 ```bash
 npm run build:pdf
 ```
 
-The output PDF can be styled as you like with CSS. Edit the `pdf-configs/style.css`.  
+出力 PDF の スタイル設定を実施する場合は、`pdf-configs/style.css` を編集してください。  
 
-### 🛠 Create release
+### 🛠 リリース作成
 
-When you push with a v** tag, GitHub Actions will additionally run the build, generate the PDF and GitHub Pages, create a Release, and register the PDF to Assets.
+vX.X.X タグを付与してプッシュすると、GitHub Actions は以下を実行します。  
+
+- PDF 生成
+- GitHub Pages 生成
+- GitHub Release 作成
+- PDF を Assets に登録
+
+以下コマンドでリリースを作成できます。  
 
 ```bash
 export VERSION=$(latest_tag=$(git describe --tags --abbrev=0 2>/dev/null) && if [ -z "$latest_tag" ]; then echo "v0.1.0"; else version=${latest_tag#v}; IFS=. read -r major minor patch <<< "$version"; echo "v$major.$minor.$((patch+1))"; fi)
@@ -41,6 +49,6 @@ git tag ${VERSION}
 git push origin main --tags
 ```
 
-### References
+### 参考文献
 
 [GitHubの機能をフルに使って職務経歴書の継続的インテグレーションを実現する](https://zenn.dev/ryo_kawamata/articles/resume-on-github)
