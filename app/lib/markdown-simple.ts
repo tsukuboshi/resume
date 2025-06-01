@@ -70,6 +70,14 @@ function convertTableToHtml(content: string): string {
       continue;
     }
 
+    // 行の先頭が`- `で始まる場合（箇条書き）
+    if (currentLine.startsWith("- ")) {
+      const listContent = currentLine.substring(2); // "- "を削除
+      htmlContent += `<li class="ml-4 mb-2 flex items-start"><span class="mr-2 text-blue-500">•</span><span>${listContent}</span></li>`;
+      i++;
+      continue;
+    }
+
     // テーブル行を検出（| で区切られている）
     if (
       currentLine.includes("|") &&
@@ -139,7 +147,7 @@ function convertTableToHtml(content: string): string {
 export function renderMarkdownContent(content: string): string {
   if (!content.trim()) return "";
 
-  // まずテーブルを変換（水平線も含む）
+  // まずテーブルを変換（水平線と箇条書きも含む）
   let processedContent = convertTableToHtml(content);
 
   // 残った水平線パターンを変換
@@ -172,10 +180,10 @@ export function renderMarkdownContent(content: string): string {
     '<code class="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono">$1</code>'
   );
 
-  // リストを変換（•で始まる行）
+  // 連続するリスト項目をul要素でラップ
   processedContent = processedContent.replace(
-    /^• (.+)$/gm,
-    '<li class="ml-4">• $1</li>'
+    /(<li class="ml-4 mb-2 flex items-start">[\s\S]*?<\/li>)(\s*<li class="ml-4 mb-2 flex items-start">[\s\S]*?<\/li>)*/g,
+    '<ul class="list-none space-y-1 mb-4">$&</ul>'
   );
 
   return processedContent;
