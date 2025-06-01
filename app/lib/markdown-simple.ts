@@ -54,35 +54,129 @@ export function parseMarkdownSimple(markdown: string): MarkdownSection[] {
   return sections;
 }
 
+// テーブル記法を検出してHTMLテーブルに変換する関数
+function convertTableToHtml(content: string): string {
+  const lines = content.trim().split("\n");
+  let htmlContent = "";
+  let i = 0;
+
+  while (i < lines.length) {
+    const currentLine = lines[i].trim();
+
+    // 水平線をチェック（---のみの行）
+    if (currentLine === "---") {
+      htmlContent += '<hr class="my-6 border-t border-gray-200">';
+      i++;
+      continue;
+    }
+
+    // テーブル行を検出（| で区切られている）
+    if (
+      currentLine.includes("|") &&
+      lines[i + 1] &&
+      lines[i + 1].includes("---")
+    ) {
+      // テーブルの開始を検出
+      const headerRow = currentLine
+        .split("|")
+        .map((cell) => cell.trim())
+        .filter((cell) => cell);
+      const separatorRow = lines[i + 1];
+
+      if (separatorRow.includes("---")) {
+        // テーブル開始
+        htmlContent +=
+          '<div class="overflow-x-auto my-4"><table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm"><thead class="bg-gray-50"><tr>';
+
+        // ヘッダー行を追加
+        headerRow.forEach((header) => {
+          htmlContent += `<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">${header}</th>`;
+        });
+
+        htmlContent += '</tr></thead><tbody class="divide-y divide-gray-200">';
+
+        // セパレーター行をスキップ
+        i += 2;
+
+        // データ行を処理
+        while (i < lines.length && lines[i].trim().includes("|")) {
+          const dataRow = lines[i]
+            .trim()
+            .split("|")
+            .map((cell) => cell.trim())
+            .filter((cell) => cell);
+          if (dataRow.length > 0) {
+            htmlContent += '<tr class="hover:bg-gray-50">';
+            dataRow.forEach((cell) => {
+              htmlContent += `<td class="px-4 py-3 text-sm text-gray-900 border-b border-gray-200">${cell}</td>`;
+            });
+            htmlContent += "</tr>";
+          }
+          i++;
+        }
+
+        htmlContent += "</tbody></table></div>";
+        i--; // 次のループで正しく進むように調整
+      } else {
+        // 通常の行として処理
+        htmlContent += currentLine + "<br>";
+      }
+    } else {
+      // 通常の行として処理
+      if (currentLine) {
+        htmlContent += currentLine + "<br>";
+      } else {
+        htmlContent += "<br>";
+      }
+    }
+
+    i++;
+  }
+
+  return htmlContent;
+}
+
 export function renderMarkdownContent(content: string): string {
-  return (
-    content
-      .trim()
-      // テーブル処理
-      .replace(/\|(.+)\|/g, (match, content) => {
-        const cells = content.split("|").map((cell: string) => cell.trim());
-        return cells.join(" | ");
-      })
-      // リスト処理
-      .replace(/^- (.+)/gm, "• $1")
-      // コードブロック処理
-      .replace(
-        /```([^`]+)```/g,
-        '<pre class="bg-gray-100 p-4 rounded overflow-x-auto"><code>$1</code></pre>'
-      )
-      // インラインコード処理
-      .replace(/`([^`]+)`/g, '<code class="bg-gray-100 px-1 rounded">$1</code>')
-      // 太字処理
-      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-      // 斜体処理
-      .replace(/\*([^*]+)\*/g, "<em>$1</em>")
-      // リンク処理
-      .replace(
-        /\[([^\]]+)\]\(([^)]+)\)/g,
-        '<a href="$2" class="text-blue-600 hover:underline" target="_blank" rel="noopener">$1</a>'
-      )
-      // 改行処理
-      .replace(/\n\n/g, '</p><p class="mb-4">')
-      .replace(/\n/g, "<br>")
+  if (!content.trim()) return "";
+
+  // まずテーブルを変換（水平線も含む）
+  let processedContent = convertTableToHtml(content);
+
+  // 残った水平線パターンを変換
+  processedContent = processedContent.replace(
+    /---<br>/g,
+    '<hr class="my-6 border-t border-gray-200">'
   );
+
+  // リンクを変換
+  processedContent = processedContent.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    '<a href="$2" class="text-blue-600 hover:underline" target="_blank" rel="noopener">$1</a>'
+  );
+
+  // 太字を変換
+  processedContent = processedContent.replace(
+    /\*\*([^*]+)\*\*/g,
+    '<strong class="font-semibold">$1</strong>'
+  );
+
+  // 斜体を変換
+  processedContent = processedContent.replace(
+    /\*([^*]+)\*/g,
+    '<em class="italic">$1</em>'
+  );
+
+  // インラインコードを変換
+  processedContent = processedContent.replace(
+    /`([^`]+)`/g,
+    '<code class="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono">$1</code>'
+  );
+
+  // リストを変換（•で始まる行）
+  processedContent = processedContent.replace(
+    /^• (.+)$/gm,
+    '<li class="ml-4">• $1</li>'
+  );
+
+  return processedContent;
 }

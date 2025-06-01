@@ -1,4 +1,5 @@
 import { useState } from 'hono/jsx';
+import { renderMarkdownContent } from '../lib/markdown-simple';
 
 interface ToggleSectionProps {
   title: string;
@@ -24,7 +25,7 @@ export default function ToggleSection({ title, content, level, defaultOpen = fal
         <h2 className={headingClass + ' mb-4'}>{title}</h2>
         <div
           className="prose max-w-none"
-          dangerouslySetInnerHTML={{ __html: `<p class="mb-4">${content}</p>` }}
+          dangerouslySetInnerHTML={{ __html: renderMarkdownContent(content) }}
         />
       </div>
     );
@@ -42,10 +43,10 @@ export default function ToggleSection({ title, content, level, defaultOpen = fal
         <span className={headingClass}>{title}</span>
       </button>
       {isOpen && (
-        <div className="px-4 pb-4">
+        <div className="px-4 pb-4 border-t border-gray-100">
           <div
-            className="prose max-w-none"
-            dangerouslySetInnerHTML={{ __html: `<p class="mb-4">${content}</p>` }}
+            className="prose max-w-none pt-3"
+            dangerouslySetInnerHTML={{ __html: renderMarkdownContent(content) }}
           />
         </div>
       )}
