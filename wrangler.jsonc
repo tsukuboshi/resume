@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "honox-resume",
+  "name": "honox-resume-template",
   "main": "./dist/index.js",
   "compatibility_date": "2025-06-01",
   "compatibility_flags": [
