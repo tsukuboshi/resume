@@ -18,8 +18,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Display repository name
-        run: echo "${{ github.event.repository.name }}"
       - name: Install dependencies
         run: npm ci
       - name: Install Japanese fonts
@@ -29,7 +27,9 @@ jobs:
       - name: Build PDF
         run: npm run build:pdf
       - name: Build
-        run: npm run build
+        run: |
+          echo "Repository name: $REPOSITORY_NAME"
+          npm run build
         env:
           REPOSITORY_NAME: "${{ github.event.repository.name }}"
       - name: Deploy
