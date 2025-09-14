@@ -28,42 +28,45 @@ fork後リポジトリのmainブランチで`public/README.md`の内容を更新
 
 ローカル環境で検証したい場合は、以下の手順を実施してください。  
 
-```bash
-# パッケージのインストール
-npm install
+1. 事前に以下コマンドでパッケージをインストール
 
+```bash
+npm install
+```
+
+2. 以下コマンドでWebサイトをプレビュー表示可能
+
+```bash
 # HTML/CSS/JS生成
 npm run build
 
+# プレビューサーバーの起動
+npm run preview
+```
+
+3. 以下コマンドでPDFファイルを生成可能
+
+```bash
 # PDF生成
 npm run build:pdf
 
 # 圧縮版PDF生成
 npm run build:pdf:compact
-
-# プレビューサーバーの起動
-npm run preview
 ```
 
 ## テンプレートリポジトリ追従手順
 
 テンプレートリポジトリの更新をfork後も取り込みたい場合は、fork後リポジトリの`public/README.md`更新前に以下手順を実施してください。  
 
-1. fork後リポジトリをクローンし移動
+1. 事前にfork後リポジトリをクローンし移動した後、テンプレートリポジトリをリモートブランチとして追加
 
 ```bash
 git clone <fork後のリポジトリURL>
 cd <fork後のリポジトリ>
-```
-
-2. 以下コマンドでテンプレートリポジトリをリモートブランチとして追加
-
-```bash
 git remote add upstream https://github.com/tsukuboshi/honox-resume-template.git
-git fetch upstream
 ```
 
-3. テンプレートリポジトリが更新された際に、以下コマンドでfork後のリポジトリに更新を取り込み可能
+2. テンプレートリポジトリが更新された際に、以下コマンドでfork後のリポジトリに更新後コミットを取り込み可能
 
 ```bash
 git fetch upstream
