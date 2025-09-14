@@ -66,16 +66,25 @@ mainブランチで`public/README.md`をコミットすると、GitHub Actions�
 - `app/components/`: UIコンポーネントの修正
 - `vite.config.ts`: ビルド設定
 
-# テンプレートリポジトリ追従手順
+## テンプレートリポジトリ追従手順
 
-- 準備
+以下手順はfork後のリポジトリの`public/README.md`更新前に実施してください。  
+
+1. fork後のリポジトリをクローンし移動
+
+```bash
+git clone <fork後のリポジトリURL>
+cd <fork後のリポジトリ>
+```
+
+2. 以下コマンドでテンプレートリポジトリをリモートブランチとして追加
 
 ```bash
 git remote add upstream https://github.com/tsukuboshi/honox-resume-template.git
 git fetch upstream
 ```
 
-- 更新
+3. テンプレートリポジトリが更新された際に、以下コマンドでfork後のリポジトリに更新を取り込み可能
 
 ```bash
 git fetch upstream
