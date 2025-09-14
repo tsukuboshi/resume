@@ -65,3 +65,20 @@ mainブランチで`public/README.md`をコミットすると、GitHub Actions�
 - `app/style.css`: スタイル調整
 - `app/components/`: UIコンポーネントの修正
 - `vite.config.ts`: ビルド設定
+
+# テンプレートリポジトリ追従手順
+
+- 準備
+
+```bash
+git remote add upstream https://github.com/tsukuboshi/honox-resume-template.git
+git fetch upstream
+```
+
+- 更新
+
+```bash
+git fetch upstream
+git checkout main
+git merge upstream/main
+```
