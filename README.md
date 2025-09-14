@@ -58,8 +58,6 @@ npm run build:pdf:compact
 
 テンプレートリポジトリの更新をfork後も取り込みたい場合は、以下手順を実施してください。  
 
-なおfork後リポジトリで`public/README.md`以外のファイルを変更しコミットした後にこの手順を実施すると、コンフリクトが発生する恐れがあるためご注意ください。  
-
 1. 事前にfork後リポジトリをクローンし移動した後、テンプレートリポジトリをリモートブランチとして追加
 
 ```bash
@@ -75,3 +73,5 @@ git fetch upstream
 git checkout main
 git merge upstream/main
 ```
+
+※fork後リポジトリで`public/README.md`以外のファイルを変更しコミットした後にこの手順を実施すると、コンフリクトが発生する恐れがあるためご注意ください。  
