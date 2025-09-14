@@ -1,9 +1,7 @@
-// HTML文字列定数
 const INLINE_CODE_CLASSES =
   "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200 shadow-sm hover:bg-blue-200 transition-colors duration-200";
 const NUMBERED_LIST_REGEX = /^\d+\.\s/;
 
-// HTMLエスケープ処理
 function escapeHtml(text: string): string {
   return text
     .replace(/&/g, "&amp;")
@@ -13,7 +11,6 @@ function escapeHtml(text: string): string {
     .replace(/'/g, "&#39;");
 }
 
-// リスト項目のHTML生成
 function createListItem(content: string, marker: string): string {
   return `<li class="ml-4 mb-2 flex items-start"><span class="mr-2 text-blue-500">${marker}</span><span>${processContent(
     content
@@ -21,18 +18,12 @@ function createListItem(content: string, marker: string): string {
 }
 
 export function convertBasicMarkdown(content: string): string {
-  return (
-    content
-      // 太字 **text** → <strong>text</strong>
-      .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-bold">$1</strong>')
-      // イタリック *text* → <em>text</em>
-      .replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em class="italic">$1</em>')
-      // インラインコード `code` → <code>code</code>
-      .replace(/`([^`]+)`/g, `<code class="${INLINE_CODE_CLASSES}">$1</code>`)
-  );
+  return content
+    .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-bold">$1</strong>')
+    .replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em class="italic">$1</em>')
+    .replace(/`([^`]+)`/g, `<code class="${INLINE_CODE_CLASSES}">$1</code>`);
 }
 
-// 共通のコンテンツ処理関数（リンク変換 + 基本記法変換）
 function processContent(content: string): string {
   return convertBasicMarkdown(
     content.replace(
@@ -50,14 +41,12 @@ export function convertTableToHtml(content: string): string {
   while (i < lines.length) {
     const currentLine = lines[i].trim();
 
-    // 水平線
     if (currentLine === "---") {
       htmlContent += '<hr class="my-6 border-t border-gray-200">';
       i++;
       continue;
     }
 
-    // コードブロック
     if (currentLine.startsWith("```")) {
       let codeContent = "";
       i++;
@@ -76,7 +65,6 @@ export function convertTableToHtml(content: string): string {
       continue;
     }
 
-    // 引用ブロック
     if (currentLine.startsWith("> ")) {
       let quoteContent = "";
       while (i < lines.length && lines[i].trim().startsWith("> ")) {
@@ -89,7 +77,6 @@ export function convertTableToHtml(content: string): string {
       continue;
     }
 
-    // 番号付きリスト
     if (NUMBERED_LIST_REGEX.test(currentLine)) {
       let listNumber = 1;
       while (i < lines.length && NUMBERED_LIST_REGEX.test(lines[i].trim())) {
@@ -101,7 +88,6 @@ export function convertTableToHtml(content: string): string {
       continue;
     }
 
-    // 箇条書きリスト
     if (currentLine.startsWith("- ")) {
       const listContent = currentLine.substring(2);
       htmlContent += createListItem(listContent, "•");
@@ -109,7 +95,6 @@ export function convertTableToHtml(content: string): string {
       continue;
     }
 
-    // テーブル
     if (currentLine.includes("|") && lines[i + 1]?.includes("---")) {
       const headerRow = currentLine
         .split("|")
@@ -120,7 +105,6 @@ export function convertTableToHtml(content: string): string {
         htmlContent +=
           '<div class="overflow-x-auto my-4"><table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm"><thead class="bg-gray-50"><tr>';
 
-        // ヘッダー行
         headerRow.forEach((header) => {
           htmlContent += `<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">${processContent(
             header
@@ -130,7 +114,6 @@ export function convertTableToHtml(content: string): string {
         htmlContent += '</tr></thead><tbody class="divide-y divide-gray-200">';
         i += 2;
 
-        // データ行
         while (i < lines.length && lines[i].trim().includes("|")) {
           const dataRow = lines[i]
             .trim()
@@ -153,7 +136,6 @@ export function convertTableToHtml(content: string): string {
       }
     }
 
-    // 通常の行
     if (currentLine) {
       htmlContent += processContent(currentLine) + "<br>";
     } else {

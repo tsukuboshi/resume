@@ -8,11 +8,9 @@ export default function DownloadSection() {
     setIsDownloading(fileType);
 
     try {
-      const fileName = fileType === 'markdown' ? 'README.md' : 'README.pdf';
-      // ベースパスを動的に取得
+      const fileName = fileType === "markdown" ? "README.md" : "README.pdf";
       const url = `${__BASE_PATH__}${fileName}`;
 
-      // ファイルをダウンロード
       const link = document.createElement('a');
       link.href = url;
       link.download = fileName;
