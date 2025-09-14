@@ -68,9 +68,9 @@ mainブランチで`public/README.md`をコミットすると、GitHub Actions�
 
 ## テンプレートリポジトリ追従手順
 
-以下手順はfork後のリポジトリの`public/README.md`更新前に実施してください。  
+テンプレートリポジトリの更新をfork後も取り込みたい場合は、fork後リポジトリの`public/README.md`更新前に以下手順を実施してください。  
 
-1. fork後のリポジトリをクローンし移動
+1. fork後リポジトリをクローンし移動
 
 ```bash
 git clone <fork後のリポジトリURL>
