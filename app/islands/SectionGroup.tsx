@@ -1,21 +1,18 @@
-import { renderMarkdownContent, SectionItem } from '../lib/markdown';
-import { useBulkToggleState } from '../hooks/useBulkToggleState';
-import { BulkToggleButton } from '../components/section/BulkToggleButton';
+import { renderMarkdownContent } from "@/app/lib/markdown";
+import { useBulkToggleState } from "@/app/hooks/useBulkToggleState";
+import { BulkToggleButton } from "@/app/components/section/BulkToggleButton";
+import type {
+  SectionGroupProps,
+  SubsectionItemProps,
+  SectionGroupHeaderProps,
+} from "@/types";
 
-interface SectionGroupProps {
-  section: SectionItem;
-  subsections: SectionItem[];
-}
-
-// セクションヘッダーコンポーネント
-interface SectionHeaderProps {
-  title: string;
-  hasSubsections: boolean;
-  allOpen: boolean;
-  onBulkToggle: () => void;
-}
-
-const SectionHeader = ({ title, hasSubsections, allOpen, onBulkToggle }: SectionHeaderProps) => (
+const SectionHeader = ({
+  title,
+  hasSubsections,
+  allOpen,
+  onBulkToggle,
+}: SectionGroupHeaderProps) => (
   <div className="flex items-center justify-between mb-4">
     <h3
       className="text-xl font-semibold text-blue-900"
@@ -28,19 +25,22 @@ const SectionHeader = ({ title, hasSubsections, allOpen, onBulkToggle }: Section
 );
 
 // サブセクションアイテムコンポーネント
-interface SubsectionItemProps {
-  subsection: SectionItem;
-  isOpen: boolean;
-  onToggle: () => void;
-}
 
-const SubsectionItem = ({ subsection, isOpen, onToggle }: SubsectionItemProps) => (
+const SubsectionItem = ({
+  subsection,
+  isOpen,
+  onToggle,
+}: SubsectionItemProps) => (
   <div className="mb-4 border border-gray-200 rounded-lg">
     <button
       onClick={onToggle}
       className="flex items-center gap-3 w-full text-left p-4 hover:bg-gray-50 transition-colors rounded-lg"
     >
-      <span className={`transform transition-transform text-gray-500 ${isOpen ? 'rotate-90' : ''}`}>
+      <span
+        className={`transform transition-transform text-gray-500 ${
+          isOpen ? "rotate-90" : ""
+        }`}
+      >
         ▶
       </span>
       <span
@@ -52,15 +52,21 @@ const SubsectionItem = ({ subsection, isOpen, onToggle }: SubsectionItemProps) =
       <div className="px-4 pb-4 border-t border-gray-100">
         <div
           className="prose max-w-none pt-3"
-          dangerouslySetInnerHTML={{ __html: renderMarkdownContent(subsection.content, subsection.title) }}
+          dangerouslySetInnerHTML={{
+            __html: renderMarkdownContent(subsection.content, subsection.title),
+          }}
         />
       </div>
     )}
   </div>
 );
 
-export default function SectionGroup({ section, subsections }: SectionGroupProps) {
-  const { toggleStates, allOpen, handleToggle, handleBulkToggle } = useBulkToggleState(subsections);
+export default function SectionGroup({
+  section,
+  subsections,
+}: SectionGroupProps) {
+  const { toggleStates, allOpen, handleToggle, handleBulkToggle } =
+    useBulkToggleState(subsections);
 
   return (
     <div className="mb-8">
@@ -76,7 +82,9 @@ export default function SectionGroup({ section, subsections }: SectionGroupProps
       {section.content.trim() && (
         <div
           className="prose max-w-none mb-6"
-          dangerouslySetInnerHTML={{ __html: renderMarkdownContent(section.content, section.title) }}
+          dangerouslySetInnerHTML={{
+            __html: renderMarkdownContent(section.content, section.title),
+          }}
         />
       )}
 

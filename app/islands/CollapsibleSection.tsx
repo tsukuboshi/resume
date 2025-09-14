@@ -1,14 +1,8 @@
 import { useState } from 'hono/jsx';
-import { renderMarkdownContent } from '../lib/markdown';
-import { SectionHeader } from '../components/ui/SectionHeader';
-import { ToggleButton } from '../components/section/ToggleButton';
-
-interface CollapsibleSectionProps {
-  title: string;
-  content: string;
-  level: number;
-  defaultOpen?: boolean;
-}
+import { renderMarkdownContent } from "@/app/lib/markdown";
+import { SectionHeader } from "@/app/components/ui/SectionHeader";
+import { ToggleButton } from "@/app/components/section/ToggleButton";
+import type { CollapsibleSectionProps } from "@/types";
 
 export default function CollapsibleSection({ title, content, level, defaultOpen = false }: CollapsibleSectionProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen);

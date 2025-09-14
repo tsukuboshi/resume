@@ -1,9 +1,4 @@
-// セクションヘッダーコンポーネント
-interface SectionHeaderProps {
-  title: string;
-  level: number;
-  className?: string;
-}
+import type { SectionHeaderProps } from '@/types';
 
 export const SectionHeader = ({ title, level, className }: SectionHeaderProps) => {
   const getHeadingClass = (level: number) => {

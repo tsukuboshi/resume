@@ -1,5 +1,5 @@
 import { useState } from 'hono/jsx';
-import { DownloadButton } from '../components/download/DownloadButton';
+import { DownloadButton } from '@/app/components/download/DownloadButton';
 
 export default function DownloadSection() {
   const [isDownloading, setIsDownloading] = useState<string | null>(null);

@@ -1,8 +1,4 @@
-// 一括トグルボタンコンポーネント
-interface BulkToggleButtonProps {
-  allOpen: boolean;
-  onClick: () => void;
-}
+import type { BulkToggleButtonProps } from '@/types';
 
 export const BulkToggleButton = ({ allOpen, onClick }: BulkToggleButtonProps) => (
   <button

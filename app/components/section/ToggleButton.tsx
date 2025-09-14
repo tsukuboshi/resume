@@ -1,12 +1,5 @@
-import { SectionHeader } from '../ui/SectionHeader';
-
-// トグルボタンコンポーネント
-interface ToggleButtonProps {
-  title: string;
-  level: number;
-  isOpen: boolean;
-  onClick: () => void;
-}
+import { SectionHeader } from '@/app/components/ui/SectionHeader';
+import type { ToggleButtonProps } from '@/types';
 
 export const ToggleButton = ({ title, level, isOpen, onClick }: ToggleButtonProps) => (
   <button

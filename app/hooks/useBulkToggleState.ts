@@ -1,5 +1,5 @@
 import { useEffect, useState } from "hono/jsx";
-import { SectionItem } from "../lib/markdown";
+import type { SectionItem } from "@/types";
 
 // 一括トグル状態管理カスタムフック
 export const useBulkToggleState = (subsections: SectionItem[]) => {

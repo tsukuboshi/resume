@@ -3,6 +3,7 @@ import ssg from "@hono/vite-ssg";
 import tailwindcss from "@tailwindcss/vite";
 import honox from "honox/vite";
 import { defineConfig } from "vite";
+import path from "path";
 
 const repositoryName = process.env.REPOSITORY_NAME;
 const basePath = repositoryName ? `/${repositoryName}/` : "";
@@ -11,6 +12,11 @@ export default defineConfig(() => ({
   base: basePath,
   define: {
     __BASE_PATH__: JSON.stringify(basePath),
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "."),
+    },
   },
   plugins: [
     honox({

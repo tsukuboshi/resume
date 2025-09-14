@@ -1,11 +1,5 @@
-import { LoadingSpinner, MarkdownIcon, PdfIcon } from '../ui/Icon';
-
-// ダウンロードボタンコンポーネント
-interface DownloadButtonProps {
-  type: 'markdown' | 'pdf';
-  isLoading: boolean;
-  onClick: () => void;
-}
+import { LoadingSpinner, MarkdownIcon, PdfIcon } from '@/app/components/ui/Icon';
+import type { DownloadButtonProps } from '@/types';
 
 export const DownloadButton = ({ type, isLoading, onClick }: DownloadButtonProps) => {
   const isPdf = type === 'pdf';

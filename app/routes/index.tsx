@@ -1,16 +1,10 @@
-import { parseMarkdownSimple, renderMarkdownContent, SectionItem } from '../lib/markdown';
-import CollapsibleSection from '../islands/CollapsibleSection';
-import SectionGroup from '../islands/SectionGroup';
-import DownloadSection from '../islands/DownloadSection';
+import { parseMarkdownSimple, renderMarkdownContent } from "@/app/lib/markdown";
+import CollapsibleSection from "@/app/islands/CollapsibleSection";
+import SectionGroup from "@/app/islands/SectionGroup";
+import DownloadSection from "@/app/islands/DownloadSection";
+import type { SectionItem, GroupedSection } from "@/types";
 // Viteの?rawクエリを使ってビルド時にファイルを読み込む
-import markdownContent from '../../public/README.md?raw';
-
-// グループ化されたセクションの型定義
-interface GroupedSection {
-  type: 'intro' | 'h3-group' | 'regular';
-  section: SectionItem;
-  subsections?: SectionItem[];
-}
+import markdownContent from "@/public/README.md?raw";
 
 export default function Home() {
   const sections = parseMarkdownSimple(markdownContent);
@@ -24,19 +18,27 @@ export default function Home() {
     sections.forEach((section) => {
       if (!section.title && section.level === 0) {
         // イントロセクション
-        grouped.push({ type: 'intro', section });
+        grouped.push({ type: "intro", section });
       } else if (section.level === 1 || section.level === 2) {
         // H1, H2は通常のCollapsibleSectionとして処理
         if (currentH3) {
-          grouped.push({ type: 'h3-group', section: currentH3, subsections: currentH3Subsections });
+          grouped.push({
+            type: "h3-group",
+            section: currentH3,
+            subsections: currentH3Subsections,
+          });
           currentH3 = null;
           currentH3Subsections = [];
         }
-        grouped.push({ type: 'regular', section });
+        grouped.push({ type: "regular", section });
       } else if (section.level === 3) {
         // 前のH3グループがあれば先に追加
         if (currentH3) {
-          grouped.push({ type: 'h3-group', section: currentH3, subsections: currentH3Subsections });
+          grouped.push({
+            type: "h3-group",
+            section: currentH3,
+            subsections: currentH3Subsections,
+          });
         }
         // 新しいH3グループを開始
         currentH3 = section;
@@ -47,17 +49,25 @@ export default function Home() {
       } else {
         // その他（H4だがH3がない場合など）
         if (currentH3) {
-          grouped.push({ type: 'h3-group', section: currentH3, subsections: currentH3Subsections });
+          grouped.push({
+            type: "h3-group",
+            section: currentH3,
+            subsections: currentH3Subsections,
+          });
           currentH3 = null;
           currentH3Subsections = [];
         }
-        grouped.push({ type: 'regular', section });
+        grouped.push({ type: "regular", section });
       }
     });
 
     // 最後のH3グループがあれば追加
     if (currentH3) {
-      grouped.push({ type: 'h3-group', section: currentH3, subsections: currentH3Subsections });
+      grouped.push({
+        type: "h3-group",
+        section: currentH3,
+        subsections: currentH3Subsections,
+      });
     }
 
     return grouped;
@@ -75,18 +85,20 @@ export default function Home() {
 
         <main className="bg-white rounded-lg shadow-lg p-8">
           {groupedSections.map((group, index) => {
-            if (group.type === 'intro') {
+            if (group.type === "intro") {
               // イントロセクション（タイトルなし）
               return (
                 <div
                   key={group.section.id}
                   className="mb-8"
                   dangerouslySetInnerHTML={{
-                    __html: `<p class="mb-4">${renderMarkdownContent(group.section.content)}</p>`
+                    __html: `<p class="mb-4">${renderMarkdownContent(
+                      group.section.content
+                    )}</p>`,
                   }}
                 />
               );
-            } else if (group.type === 'h3-group') {
+            } else if (group.type === "h3-group") {
               // H3セクションとその配下のH4項目
               return (
                 <SectionGroup
@@ -97,7 +109,9 @@ export default function Home() {
               );
             } else {
               // 通常のセクション（H1, H2など）
-              const processedContent = renderMarkdownContent(group.section.content);
+              const processedContent = renderMarkdownContent(
+                group.section.content
+              );
               return (
                 <CollapsibleSection
                   key={group.section.id}
