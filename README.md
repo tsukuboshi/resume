@@ -16,13 +16,16 @@ HonoXを使用した職務経歴書Webアプリケーションのテンプレー
 - **ビルドツール**: Vite
 - **スタイリング**: TailwindCSS
 - **PDF生成**: md-to-pdf
-- **デプロイ**: GitHub Pages
+- **サイト公開**: GitHub Pages
 
-## デプロイ方法
+## デプロイ手順
 
-fork後リポジトリのmainブランチで`public/README.md`の内容を更新しコミットすると、GitHub ActionsによりGitHub Pagesに自動デプロイされます。
+以下手順で職務経歴書サイトを公開できます。  
 
-デプロイが成功すると、`https://<ユーザー名>.github.io/<リポジトリ名>`のURLより職務経歴書サイトにアクセスできます。  
+1. `Use this Template`の`Create a new repository`をクリック
+2. `Include all branches`にチェックを入れた上で、任意のリポジトリ名を入力しPublicリポジトリとして作成
+3. mainブランチで`public/README.md`の内容を更新しコミット・プッシュすると、GitHub ActionsによりGitHub Pagesへの自動デプロイが開始される
+4. GitHub Actionsのデプロイが成功すると、`https://<ユーザー名>.github.io/<リポジトリ名>`のURLより職務経歴書サイトにアクセス可能  
 
 ## ローカル検証手順
 
