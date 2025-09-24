@@ -377,11 +377,12 @@ DevelopersIO、Zennなどで100本以上の技術記事を執筆すると共に�
 - [AWS入門ブログリレー2024〜Amazon Bedrock編〜](https://dev.classmethod.jp/articles/introduction-2024-aws-bedrock/)
 - [CloudFormation一撃で作るAWS料金通知ツール(Email/Slack/LINE対応)](https://dev.classmethod.jp/articles/notify-aws-billing-for-cloudformaiton/)
 - [Knowledge Bases for Amazon Bedrock (with OpenSearch Serverless)をSAMで実装してみた](https://dev.classmethod.jp/articles/sam-knowledge-base-for-bedrock-with-oss/)
-- [S3にアップロードしたAWS構成図をCloudFormationに変換するシステムを作ってみた](https://dev.classmethod.jp/articles/bedrock-claude-convert-diagram-to-cfn/)
 - [Kendraのアクセスコントロール設定をEntra IDのOpen ID Connectを用いて有効化してみた](https://dev.classmethod.jp/articles/kendra-sharepoint-entraid-oidc/)
-- [AWSの構成図をChatGPT(GPT-4V)に読み込ませてIaCコードを生成してみた](https://dev.classmethod.jp/articles/chatgpt-convert-aws-diagram-to-iac/)
 - [ECSとCodePipelineのブルー/グリーンデプロイ構成をCDKで実装してみた](https://dev.classmethod.jp/articles/cdk-ecr-ecs-bluegreen-deployment/)
 - [FireLens(Fluent Bit)におけるログルーティングの仕組みについて調査してみた](https://dev.classmethod.jp/articles/ecs_firelens_tag/)
+- [ECS Service ConnectをTerraformでデプロイしてみた](https://dev.classmethod.jp/articles/ecs-service-connect-terraform/)
+- [CloudFormationでAWS WAFのカウントモードとブロックモードを切り替えてみた](https://dev.classmethod.jp/articles/cfn-create-waf-count-block-switch/)
+- [NLB/GWLB/CLBの作成を禁止するIAMポリシーを作ってみた](https://dev.classmethod.jp/articles/deny-nlb-glb-clb-iam-policy/)
 - [TerraformでCloudFront Functionsを環境ごとに有効化/無効化してみた](https://dev.classmethod.jp/articles/cloudfront-functions-per-env-terraform/)
 
 #### Zenn
